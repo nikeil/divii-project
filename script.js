@@ -131,3 +131,13 @@ async function saveWedding(answer){
         behavior: "smooth"
     });
 }
+function saveWedding(answer){
+   // your code
+}
+
+window.scrollToSection = scrollToSection;
+window.calculateCompatibility = calculateCompatibility;
+window.saveSurvey = saveSurvey;
+window.saveFinal = saveFinal;
+window.saveRide = saveRide;
+window.saveWedding = saveWedding;
