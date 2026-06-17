@@ -15,15 +15,25 @@ function calculateCompatibility(){
     .innerText = score + "%";
 }
 
-function saveSurvey(){
+async function saveSurvey(){
+
+    const data = {
+        impression: document.getElementById("impression").value,
+        nikType: document.getElementById("nikType").value,
+        rideDestination: document.getElementById("rideDestination").value,
+        diagnosis: document.getElementById("diagnosis").value
+    };
+
+    console.log(data);
+
     alert("Survey saved!");
+
     document
     .querySelector(".compatibility")
     .scrollIntoView({
         behavior:"smooth"
     });
 }
-
 function saveWedding(answer){
     alert("Answer selected: " + answer);
 }
