@@ -15,3 +15,7 @@ document
 .getElementById("score")
 .innerText = score + "%";
 }
+function saveSurvey() {
+    alert("Survey submitted successfully!");
+    scrollToSection("compatibility");
+}
