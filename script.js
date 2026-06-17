@@ -37,3 +37,12 @@ async function saveSurvey(){
 function saveWedding(answer){
     alert("Answer selected: " + answer);
 }
+function saveFinal(answer){
+    alert("Date answer: " + answer);
+
+    document
+    .querySelector(".rides")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
