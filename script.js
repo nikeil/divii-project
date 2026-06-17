@@ -46,3 +46,12 @@ function saveFinal(answer){
         behavior:"smooth"
     });
 }
+function saveRide(destination){
+    alert("Ride selected: " + destination);
+
+    document
+    .querySelector(".wedding")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+}
