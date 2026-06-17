@@ -1,91 +1,133 @@
-import {
-  collection,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-import { db } from "./firebase-config.js";
-
 function scrollToSection(id){
     document
     .getElementById(id)
     .scrollIntoView({
-        behavior:"smooth"
+        behavior: "smooth"
     });
 }
 
+async function saveToFirebase(collectionName, data){
+
+    try{
+
+        const {
+            collection,
+            addDoc
+        } = await import(
+            "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js"
+        );
+
+        await addDoc(
+            collection(window.db, collectionName),
+            data
+        );
+
+        console.log("Saved:", collectionName, data);
+
+    }catch(error){
+
+        console.error("Firebase Error:", error);
+
+    }
+}
+
 function calculateCompatibility(){
+
     const score =
-    Math.floor(Math.random()*15)+85;
+    Math.floor(Math.random() * 15) + 85;
 
     document
     .getElementById("score")
     .innerText = score + "%";
+
+    saveToFirebase(
+        "compatibilityScores",
+        {
+            score: score,
+            timestamp: new Date().toISOString()
+        }
+    );
 }
 
 async function saveSurvey(){
 
     const data = {
-        impression: document.getElementById("impression").value,
-        nikType: document.getElementById("nikType").value,
-        rideDestination: document.getElementById("rideDestination").value,
-        diagnosis: document.getElementById("diagnosis").value,
-        createdAt: new Date().toISOString()
+
+        impression:
+        document.getElementById("impression").value,
+
+        nikType:
+        document.getElementById("nikType").value,
+
+        rideDestination:
+        document.getElementById("rideDestination").value,
+
+        diagnosis:
+        document.getElementById("diagnosis").value,
+
+        timestamp:
+        new Date().toISOString()
     };
 
-    try {
+    await saveToFirebase(
+        "surveys",
+        data
+    );
 
-        await addDoc(
-            collection(db, "surveyResponses"),
-            data
-        );
-
-        alert("Survey saved!");
-
-        document
-        .querySelector(".compatibility")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    } catch(error) {
-
-        console.error(error);
-
-        alert("Failed to save survey");
-    }
+    document
+    .querySelector(".compatibility")
+    .scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
-function saveFinal(answer){
+async function saveFinal(answer){
 
-    alert("Date answer: " + answer);
+    await saveToFirebase(
+        "dateResponses",
+        {
+            answer: answer,
+            timestamp: new Date().toISOString()
+        }
+    );
 
     document
     .querySelector(".rides")
     .scrollIntoView({
-        behavior:"smooth"
+        behavior: "smooth"
     });
 }
 
-function saveRide(destination){
+async function saveRide(destination){
 
-    alert("Ride selected: " + destination);
+    await saveToFirebase(
+        "rideResponses",
+        {
+            destination: destination,
+            timestamp: new Date().toISOString()
+        }
+    );
 
     document
     .querySelector(".wedding")
     .scrollIntoView({
-        behavior:"smooth"
+        behavior: "smooth"
     });
 }
 
-function saveWedding(answer){
+async function saveWedding(answer){
 
-    alert("Answer selected: " + answer);
+    await saveToFirebase(
+        "weddingResponses",
+        {
+            answer: answer,
+            timestamp: new Date().toISOString()
+        }
+    );
+
+    document
+    .querySelector(".ending")
+    .scrollIntoView({
+        behavior: "smooth"
+    });
 }
-
-// Make functions available to HTML buttons
-window.scrollToSection = scrollToSection;
-window.calculateCompatibility = calculateCompatibility;
-window.saveSurvey = saveSurvey;
-window.saveFinal = saveFinal;
-window.saveRide = saveRide;
-window.saveWedding = saveWedding;
