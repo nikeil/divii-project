@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Divii.exe</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>Hey Divii 👋</h1>
+
+<p>
+This isn't sponsored.<br>
+This isn't a brand collaboration.<br>
+This is just Nik doing something slightly ridiculous.
+</p>
+
+<button onclick="scrollToSection('about')">
+Continue
+</button>
+
+</section>
+
+<section id="about">
+
+<img src="assets/classic350-black.jpg">
+
+<h2>Some things I noticed...</h2>
+
+<div class="card">
+🏍️ Your love for bikes
+</div>
+
+<div class="card">
+🎥 Your creativity
+</div>
+
+<div class="card">
+🌱 Your values
+</div>
+
+<div class="card">
+❤️ Your empathy
+</div>
+
+<div class="card">
+👀 Your eyes
+</div>
+
+</section>
+
+<section class="questions">
+
+<h2>Quick Survey</h2>
+
+<input id="impression"
+placeholder="Your first impression of Nik">
+
+<select id="nikType">
+<option>Select One</option>
+<option>Friend Nik</option>
+<option>Good Friend Nik</option>
+<option>Interesting Nik</option>
+<option>Need More Data Nik</option>
+</select>
+
+<input id="rideDestination"
+placeholder="Dream bike ride destination">
+
+<select id="diagnosis">
+<option>Cute</option>
+<option>Crazy</option>
+<option>Both</option>
+</select>
+
+<button onclick="saveSurvey()">
+Save & Continue
+</button>
+
+</section>
+
+<section class="compatibility">
+
+<h2>Compatibility Test</h2>
+
+<button onclick="calculateCompatibility()">
+Calculate
+</button>
+
+<h1 id="score"></h1>
+
+</section>
+
+<section class="question">
+
+<h2>Divii...</h2>
+
+<p>
+Would you like to go on a date with me?
+</p>
+
+<button onclick="saveFinal('Yes')">💕 Yes</button>
+
+<button onclick="saveFinal('Coffee')">
+☕ Start With Coffee
+</button>
+
+<button onclick="saveFinal('Talk')">
+💭 Let's Talk About It
+</button>
+
+<button onclick="saveFinal('No')">
+😌 You're Sweet But No
+</button>
+
+</section>
+
+<section class="rides">
+
+<img src="assets/hunter350-green.jpg">
+
+<h2>Choose Your Adventure</h2>
+
+<button onclick="saveRide('Flamingo Point')">
+🦩 Flamingo Point Ride
+</button>
+
+<button onclick="saveRide('ISKCON')">
+🌱 ISKCON Morning Ride
+</button>
+
+<button onclick="saveRide('Custom')">
+🎨 You Decide
+</button>
+
+</section>
+
+<section class="wedding">
+
+<h2>Secret Side Quest 🎉</h2>
+
+<p>
+My friend's wedding is on the 24th.
+Would you come with me?
+</p>
+
+<button onclick="saveWedding('Yes')">
+💕 I'd Love To
+</button>
+
+<button onclick="saveWedding('Maybe')">
+🤔 Maybe
+</button>
+
+<button onclick="saveWedding('Lets See')">
+😌 Let's See
+</button>
+
+</section>
+
+<section class="ending">
+
+<h2>Whatever your answer is...</h2>
+
+<p>
+Thank you for taking the time to go through all of this.
+</p>
+
+<h3>— Nik 🏍️🌱</h3>
+
+</section>
+
+<script type="module" src="firebase-config.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
