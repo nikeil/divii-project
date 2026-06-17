@@ -132,7 +132,6 @@ async function saveWedding(answer){
     });
 }
 
-
 window.scrollToSection = scrollToSection;
 window.calculateCompatibility = calculateCompatibility;
 window.saveSurvey = saveSurvey;
